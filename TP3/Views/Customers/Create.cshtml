@@ -1,0 +1,40 @@
+﻿@model TP3.Models.Customers
+
+<h2>Create Customer</h2>
+
+<!-- Display General Errors -->
+@if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (string error in ViewBag.Errors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MembershipTypeId" class="control-label">Membership Type</label>
+        <select asp-for="MembershipTypeId" class="form-control" asp-items="@ViewBag.Member"></select>
+        <span asp-validation-for="MembershipTypeId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+<!-- Validation Scripts -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

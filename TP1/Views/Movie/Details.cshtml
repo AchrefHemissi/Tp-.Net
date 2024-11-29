@@ -1,0 +1,11 @@
+﻿@model MovieCustomerViewModel
+
+<h2>Movie: @Model.Movie.Name</h2>
+
+<h3>Customers:</h3>
+<ul>
+    @foreach (var customer in Model.Customers)
+    {
+        <li>@customer.Name</li>
+    }
+</ul>

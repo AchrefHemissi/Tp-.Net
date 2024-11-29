@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MembershipType>
+
+
+<a href="@Url.Action("Create", "MembershipType")">Create New</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>MembershipType id</th>
+            <th>Membership Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var membershipType in Model)
+        {
+            <tr>
+                <td>@membershipType.Id</td>
+                <td>@membershipType.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", "MembershipType", new { id = membershipType.Id })">Edit</a> |
+                    <a href="@Url.Action("Details", "MembershipType", new { id = membershipType.Id })">Details</a> |
+                    <a href="@Url.Action("Delete", "MembershipType", new { id = membershipType.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
